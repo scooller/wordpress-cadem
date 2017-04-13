@@ -1,9 +1,9 @@
 <?php
-if(isset($_POST['_token'])):
+/*if(isset($_POST['_token'])):
 	$result=print_r($_POST,true);
 	$result=json_encode($result);
 	die($result);
-endif;
+endif;*/
 ?>
 <!doctype html>
 <html>

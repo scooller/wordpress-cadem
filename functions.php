@@ -215,56 +215,78 @@ function get_concursantes(){
 /*
 New Users
 */
+
+define('SALT', 'qEGST6a1EeILR+62DComCy3rlRssLNTI1gx5Fgo1Qw'); 
+
+function encrypt($text) 
+{ 
+    return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, SALT, $text, MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND)))); 
+} 
+
+function decrypt($text) 
+{ 
+    return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, SALT, base64_decode($text), MCRYPT_MODE_ECB, mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB), MCRYPT_RAND))); 
+} 
+
+function FechaNac($fechaN)
+{
+	$date = new DateTime($fechaN);
+    return $date->format('Y-m-d');
+}
+
+function ReplaceRut($rut)
+{
+	$FormatRut = str_replace(array('.','-'), '', trim($rut));
+	return $FormatRut;
+
+}
+
 add_action( 'wp_ajax_new_user', 'new_user' );
 add_action( 'wp_ajax_nopriv_new_user', 'new_user' );
+
 function new_user(){
 	$resp = 'Exito';
-	$fecha = strtotime($_POST['nacimiento_submit']);
-	$fecha = date('d-m-Y',$fecha);
 	//--
+	
 	$user_post = array(
-		'name'					=> $_POST['nombres'],
-		'last_name'				=> $_POST['apellidos'],
-		'email'					=> $_POST['email'],
-		'nacimiento'			=> $fecha,
-		'sexo'					=> $_POST['sexo'],
-		'rut'					=> $_POST['rut'],
-		'region'				=> $_POST['region'],
-		'comuna'				=> $_POST['comunasel'],
-		'pass'					=> $_POST['password'],
-		'ingreso'				=> $_POST['typeNY'],
-		'actividad_sostenedor'	=> $_POST['p3'],
-		'actividad_principal'	=> $_POST['p1'],
-		'educacion'				=> $_POST['p5'],
-		'trabajo'				=> $_POST['p6']		
+		'nombres'					=> $_POST['nombres'],
+		'apellidos'					=> $_POST['apellidos'],
+		'email'						=> $_POST['email'],
+		'fecha_nacimiento'			=> FechaNac($_POST['nacimiento_submit']),
+		'sexo'						=> $_POST['sexo'],
+		'rut'						=> ReplaceRut($_POST['rut']),
+		'email'						=> $_POST['email'],
+		'region'					=> $_POST['region'],
+		'comuna'					=> $_POST['comunasel'],
+		'p2'						=> $_POST['typeNY'],
+		'p1'						=> $_POST['p3'],
+		'p3'						=> $_POST['p1'],
+		'p5'						=> $_POST['p5'],
+		'p6'						=> $_POST['p6'],
+		'password'					=> encrypt($_POST['password']),
+		'confirmapassword'			=> encrypt($_POST['confirmapassword']),
+		'terminos'					=> str_replace('on', 1, $_POST['terminos']),
+		'created_at'				=> date("Y-m-d H:i:s"),
+		'ultima_ip'					=> $_SERVER['REMOTE_ADDR'],
+		'form'						=> 'wp-new'
 	);
-	//$resp = __('Exito', 'cademonline');
-	$username=$user_post['name'].'('.$user_post['rut'].')';
 
-	$user_id = username_exists( $username );
-	if ( !$user_id and email_exists($user_post['email']) == false ) {
-		$user_id = wp_create_user( $username, $user_post['pass'], $user_post['email'] );
-	} else {
-		$resp = __('El usuario ya Existe', 'cademonline');
+	$db = new wpdb('root','','cadem_apppanel','localhost');
+
+	$rut = ReplaceRut($_POST['rut']);
+
+	$query = "select count(*) from users where rut = $rut || email = '{$_POST["email"]}'";
+
+	$num = $db->get_var($query);
+
+	if($num == 0)
+	{
+		$db->insert('users', $user_post);
 	}
-	if(!$user_id->errors){
-		//extra fields
-		add_user_meta( $user_id, 'nombre', $user_post['name']);
-		add_user_meta( $user_id, 'apellidos', $user_post['last_name']);
-		add_user_meta( $user_id, 'sexo', $user_post['sexo']);
-		add_user_meta( $user_id, 'nacimiento', $user_post['nacimiento']);
-		add_user_meta( $user_id, 'rut', $user_post['rut']);
-		add_user_meta( $user_id, 'region', $user_post['region']);
-		add_user_meta( $user_id, 'comuna', $user_post['comuna']);
-		add_user_meta( $user_id, 'ingreso', $user_post['ingreso']);
-		add_user_meta( $user_id, 'actividad_sostenedor', $user_post['actividad_sostenedor']);
-		add_user_meta( $user_id, 'actividad_principal', $user_post['actividad_principal']);
-		add_user_meta( $user_id, 'educacion', $user_post['educacion']);
-		add_user_meta( $user_id, 'trabajo', $user_post['trabajo']);
-	}else{
-		$resp = __('Error al crear usuario', 'cademonline');
+	else{
+		$resp = 'Usuario ya existe';		
 	}
-	//$resp = print_r($_POST,true);
+	
 	//respuesta
 	wp_die( $resp );
 }
