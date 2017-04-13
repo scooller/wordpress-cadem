@@ -245,6 +245,8 @@ add_action( 'wp_ajax_new_user', 'new_user' );
 add_action( 'wp_ajax_nopriv_new_user', 'new_user' );
 
 function new_user(){
+	global $wpdb;
+	
 	$resp = 'Exito';
 	//--
 	
@@ -271,19 +273,17 @@ function new_user(){
 		'form'						=> 'wp-new'
 	);
 
-	$db = new wpdb('root','','cadem_apppanel','localhost');
+	//$db = new wpdb('root','','cadem_apppanel','localhost');
 
 	$rut = ReplaceRut($_POST['rut']);
 
 	$query = "select count(*) from users where rut = $rut || email = '{$_POST["email"]}'";
 
-	$num = $db->get_var($query);
+	$num = $wpdb->get_var($query);
 
-	if($num == 0)
-	{
-		$db->insert('users', $user_post);
-	}
-	else{
+	if($num == 0) {
+		$wpdb->insert('users', $user_post);
+	} else{
 		$resp = 'Usuario ya existe';		
 	}
 	

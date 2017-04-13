@@ -27,12 +27,12 @@ get_header(); ?>
 					<div class="input-field custom-radio col m4 s12">
 						<span>Género</span>
 						<label class="active" data-error="Seleccione respuesta" data-success="">
-							<input name="sexo" type="radio" value="1" checked required />
+							<input name="sexo" type="radio" value="masculino" checked required />
 							<i class="icon-male small" aria-hidden="true"></i>
 							<div class="msj">Masculino</div>
 						</label>
 						<label>
-							<input name="sexo" type="radio" value="2" required />
+							<input name="sexo" type="radio" value="femenino" required />
 							<i class="icon-female small" aria-hidden="true"></i>
 							<div class="msj">Femenino</div>
 						</label>
@@ -83,22 +83,11 @@ get_header(); ?>
 						¿Es usted la persona que aporta el ingreso principal del hogar?
 					</div>
 					<div class="input-field col m4 s6">
-						<input type="radio" id="typeNY5" name="typeNY" class="check" value="1" required />
+						<input type="radio" id="typeNY5" name="typeNY" class="check" value="si" required />
       					<label for="typeNY5" data-error="Seleccione respuesta" data-success="">Si</label>
-      					<input type="radio" id="typeNY6" name="typeNY" class="check" value="2" required />
+      					<input type="radio" id="typeNY6" name="typeNY" class="check" value="no" required />
       					<label for="typeNY6">No</label>
-					</div>
-					<div class="input-field col m12 s12 sostenedor">
-						<select name="p1" required>
-						  <option value="" disabled selected>¿Cuál es la actividad principal del sostenedor del hogar?</option>
-						  <option value="1">Trabajo Remuneradamente</option>
-						  <option value="2">Estudiante</option>
-						  <option value="3">Dueña de Casa</option>
-						  <option value="4">Desempleado (buscando trabajo)</option>
-						  <option value="5">Retirado, Jubilado, Pensionado</option>
-						  <option value="6">Otro</option>
-						</select>
-					</div>
+					</div>					
 					<!-- new preguntas -->
 					<!-- SI -->
 					<div class="input-field col m12 s12 chkSi">
@@ -127,10 +116,32 @@ get_header(); ?>
 							<option value="10">Post grado, magister, doctorado</option>
 						</select>
 					</div>
-					<!-- NO -->					
+					<div class="input-field col m12 s12 chkSi">
+						<select name="p6" required disabled>
+					  		<option value="" disabled selected>¿Cuál es tu trabajo u ocupación?</option>
+					  		<option value="1">Trabajos menores, ocasionales, informales (lavado/aseo)</option>
+							<option value="2">Oficio menor / obrero no calificado/ jornalero / servicio doméstico con contrato</option>
+							<option value="3">Obrero calificado / capataz / microempresario (taxi, kiosco, comercio menor o ambulante)</option>
+							<option value="4">Empleado administrativo medio y bajo / Técnico especializado / Profesor primario o secundario</option>
+							<option value="5">Ejecutivo medio, gerente, subgerente de empresa mediana o pequeña / Profesional independiente</option>
+							<option value="6">Alto ejecutivo, Gerente General, Director o empresario propietario de grandes empresas</option>
+						</select>
+					</div>
+					<!-- NO -->	
 					<div class="input-field col m12 s12 chkNo">
-						<select name="p5" required disabled>
-						  	<option value="" disabled selected>¿Cuál es tu nivel educacional?</option>
+						<select name="p1" required>
+						  <option value="" disabled selected>¿Cuál es la actividad principal del sostenedor del hogar?</option>
+						  <option value="1">Trabajo Remuneradamente</option>
+						  <option value="2">Estudiante</option>
+						  <option value="3">Dueña de Casa</option>
+						  <option value="4">Desempleado (buscando trabajo)</option>
+						  <option value="5">Retirado, Jubilado, Pensionado</option>
+						  <option value="6">Otro</option>
+						</select>
+					</div>				
+					<div class="input-field col m12 s12 chkNo">
+						<select name="p4" required disabled>
+						  	<option value="" disabled selected>¿Cuál es el nivel educacional del sostenedor del hogar?</option>
 						  	<option value="1">Sin Educación</option>
 							<option value="2">Básica incompleta</option>
 							<option value="3">Básica completa</option>
@@ -145,7 +156,7 @@ get_header(); ?>
 					</div>
 					<div class="input-field col m12 s12 chkNo">
 						<select name="p6" required disabled>
-					  		<option value="" disabled selected>¿Cuál es tu trabajo u ocupación?</option>
+					  		<option value="" disabled selected>¿Cuál es el trabajo u ocupación del sostenedor del hogar?</option>
 					  		<option value="1">Trabajos menores, ocasionales, informales (lavado/aseo)</option>
 							<option value="2">Oficio menor / obrero no calificado/ jornalero / servicio doméstico con contrato</option>
 							<option value="3">Obrero calificado / capataz / microempresario (taxi, kiosco, comercio menor o ambulante)</option>
@@ -174,7 +185,6 @@ get_header(); ?>
 					</div>
 				</div>				
 			</div></div>
-			
 			
 		</form>
 		
