@@ -15,7 +15,7 @@ wp_reset_postdata();
 </div>
 
 <div class="main" id="fullpage">
-	<section class="color-1 section">		
+	<section class="color-1 section" id="section-1">		
 	<main class="valign-wrapper">
 		<h6 class="sub-title" data-anim="fadeInLeft">Bienvenidos</h6>
 		<div class="valign"><div class="big" data-anim="fadeInLeft">
@@ -46,7 +46,7 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 endwhile; endif;
 wp_reset_postdata();
 ?>
-	<section class="color-2 section" style="background-image: url(<?php echo $premios[0]['img'] ?>)">
+	<section class="color-2 section" id="section-2" style="background-image: url(<?php echo $premios[0]['img'] ?>)">
 	<main>
 
 		<div class="row">
@@ -79,7 +79,7 @@ wp_reset_postdata();
 	</main>
 	</section>
 	<!-- // -->
-	<section class="color-3 section">
+	<section class="color-3 section" id="section-3">
 <?php
 $query = new WP_Query(array('post_type' => 'encuesta', 'post_status' => 'publish', 'posts_per_page' => -1, 'order' => 'DESC', 'orderby' => 'menu_order'));
 $encuestas = array();
@@ -99,7 +99,7 @@ wp_reset_postdata();
 				<div class="col s6">
 					<h6>Ganadores</h6>
 				</div>
-				<div class="col s6"><form id="searchwin">			
+				<div class="col s12"><form id="searchwin">			
 					<div class="input-group">
 						<input type="search" id="search-input" placeholder="Busca tu encuesta" class="autocomplete">
 						<button type="submit" class="sufix"><i class="material-icons icon-search"></i></button>
@@ -107,7 +107,7 @@ wp_reset_postdata();
 					<span>*Ingresa aquí el nombre de la encuesta que participaste</span>
 				</form></div>
 			</div>
-		<div class="col m6 s12" style="padding-right: 6rem;">			
+		<div class="col m6 s12 txt">			
 			<div class="valign-wrapper"><div class="valign" style="z-index: 99;">
 				<div class="big" data-anim="fadeIn"><p><b>Busca aquí</b> si eres uno de los <b>ganadores</b></p></div>
 				<div class="input-field" data-anim="fadeInLeft">
@@ -152,7 +152,7 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 endwhile; endif;
 wp_reset_postdata();
 ?>
-	<section class="color-4 section" style="background-image: url(<?php echo $img[0]; ?>)">
+	<section class="color-4 section" id="section-4" style="background-image: url(<?php echo $img[0]; ?>)">
 		<main>
 			<div class="row">
 			<div class="col m12 s12">
@@ -165,7 +165,7 @@ wp_reset_postdata();
 		</main>
 	</section>
 	<!-- // -->
-	<section class="color-5 section">
+	<section class="color-5 section" id="section-5">
 <?php
 $query = new WP_Query(array('post_type' => 'page', 'post_status' => 'publish', 'p' => 69));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
@@ -218,7 +218,7 @@ wp_reset_postdata();
 		</main>
 	</section>
 	 // -->
-	<section class="color-6 section">
+	<section class="color-6 section" id="section-6">
 		<main>
 <?php
 $query = new WP_Query(array('post_type' => 'page', 'post_status' => 'publish', 'p' => 31));
@@ -243,7 +243,7 @@ wp_reset_postdata();
 		</main>
 	</section>
 	<!-- // -->
-	<section class="color-7 section">
+	<section class="color-7 section" id="section-7">
 <?php
 $query = new WP_Query(array('post_type' => 'faqs', 'post_status' => 'publish', 'posts_per_page' => -1, 'order' => 'DESC', 'orderby' => 'menu_order'));
 $faqs = array();
@@ -288,7 +288,7 @@ var $preguntas=Array(
 </script>
 	</section>
 	<!-- // -->
-	<section class="color-8 section">
+	<section class="color-8 section" id="section-8">
 		<main>
 		<div class="row">
 			<div class="col m7 s12">

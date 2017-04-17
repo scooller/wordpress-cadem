@@ -1,7 +1,11 @@
 // JavaScript Document
 var $isMobile=false;
+var $isIphone=false;
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 	$isMobile=true;
+}
+if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+	$isIphone=true;
 }
 var $fullPage;
 var scrollSelect;
@@ -87,16 +91,40 @@ $(function() {
 		/*if($isMobile){
 			fpoptions['fixedElements']='.navbar-fixed';
 		}*/
-		$fullPage=$('#fullpage').fullpage(fpoptions);	
+		if(!$isIphone){
+			$fullPage=$('#fullpage').fullpage(fpoptions);	
+		}else{
+			$('main').css('overflow','hidden');
+			$('.page-footer').css('position','static');
+			$.each($('section').find('[data-anim]'),function(index,val){
+				$seccion=$(this);
+				$anim=$seccion.data('anim');
+				$anim=$anim.replace(/In/i, "Out");	
+				$seccion.removeClass('animated '+$anim);							
+				$seccion.addClass('animated '+$seccion.data('anim'));
+			});
+		}
 	}
 	reSize();
+	if($isIphone){
+		$.each($('.nav-click a'),function(index,val){
+			var num=$(this).attr('href').replace('#','');
+			$(this).attr('href','#section-'+num);
+		});
+		$.each($('a.nav-click'),function(index,val){
+			var num=$(this).attr('href').replace('#','');
+			$(this).attr('href','#section-'+num);
+		});
+	}
 	$('a.nav-click').click(function(event){
-		event.preventDefault;
-		var num=$(this).attr('href').replace('#','');
 		$('.sidebar ol > li.active,.side-nav ol > li.active').removeClass('active');
 		$(this).parent('li').addClass('active');
-		$.fn.fullpage.moveTo(num);
-		return false;
+		if(!$isIphone){
+			event.preventDefault;
+			var num=$(this).attr('href').replace('#','');			
+			$.fn.fullpage.moveTo(num);
+			return false;
+		}
 	});
 	$('select.select-jump').change(function(){
 		var content=$(this).parents('section');
@@ -183,6 +211,10 @@ $(function() {
 	$( ".svg" ).inlineSVG();
 	//funciones de inicializacion para llamarlas por ajax
 	init();
+	if($isIphone){
+		//$('body').css('display','block');
+		//$('.section').css('display','block');
+	}
 });
 $(window).load(function() {
 	//formulario

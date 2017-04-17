@@ -168,11 +168,11 @@ get_header(); ?>
 					<!-- // -->
 					<div class="col m12 hide-on-small-only">&nbsp;</div>
 					<div class="input-field col m6 s12">
-						<input id="pass" type="text" name="password" class="validate" required required="" aria-required="true">
+						<input id="pass" type="password" name="password" class="validate" required required="" aria-required="true">
 						<label for="pass" data-error="Ingrese contraseña valida" data-success="">Contraseña</label>
 					</div>
 					<div class="input-field col m6 s12">
-						<input id="re_pass" type="text" name="confirmapassword" class="validate" required required="" aria-required="true">
+						<input id="re_pass" type="password" name="confirmapassword" class="validate" required required="" aria-required="true">
 						<label for="re_pass" data-error="Contraseña no coincide" data-success="">Confirma tu contraseña</label>
 					</div>
 					<div class="input-field col m6 s12">

@@ -52,10 +52,14 @@ html,body{
 	padding:0;
 	font-family: 'Rubik', sans-serif;
 }
-body{
-	display: flex;
+body{	
+    display: flex;
+	display: -webkit-flexbox;
+	display: -ms-flexbox;
+	display: -webkit-flex;
     min-height: 100vh;
     flex-direction: column;
+	-webkit-flex-direction: column;
 }
 .error404{
 	background-image: url(../img/bg-01.jpg);
@@ -70,10 +74,14 @@ body{
 }
 .section{
 	padding: 0;
-	display: flex;
+    display: flex;
+	display: -webkit-flexbox;
+	display: -ms-flexbox;
+	display: -webkit-flex;
 	width: 100%;
     min-height: 100vh;
     flex-direction: column;
+	-webkit-flex-direction: column;
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: $default;
@@ -390,16 +398,16 @@ main {
 	}
 	form.tab-content{
 		margin-top: 30px;
-		color: $blck-select;
+		color: $default;
 		font-size: 1.2rem;
 		.input-field{
 			input{
 				border-color: $default;
-				color: $blck-select;
+				color: $default;
 				box-shadow: none!important;
 			}
 			label{
-				color: $blck-select;
+				color: $default;
 			}
 			input:focus{
 				color: $default!important;
@@ -412,6 +420,9 @@ main {
 		}
 		.row .col{
 			min-height: 40px!important;
+		}
+		a{
+			color: $default;
 		}
 	}
 	.tabs.linear{
@@ -515,7 +526,7 @@ main {
 			margin-top: -15px;
 		}
 		>span{
-			color: $blck-select;
+			color: $default;
 			display: inline-block;
 			position: relative;
 			top: -20px;
@@ -603,6 +614,9 @@ main {
 	background-image: url(../img/bg-03.jpg);
 	.inside-title{
 		margin-left: 20px;
+	}
+	.txt{
+		padding-right: 6rem;
 	}
 	main .input-group .material-icons{
 		color: #ccc!important;
@@ -1057,6 +1071,8 @@ body section:last-of-type{
 	height: 100%!important;
 	.carousel-item{
 		display: flex!important;
+		display: -webkit-flex!important;
+		display: -ms-flexbox!important;
 	}
 }
 @media #{$small-and-down} {
@@ -1100,6 +1116,9 @@ body section:last-of-type{
 				width: 100%;
 				line-height: 3rem;
 			}
+		}
+		.tab-cont div.col li{
+			line-height: 20px;
 		}
 	}
 	main#perfil-row{
@@ -1189,8 +1208,8 @@ body section:last-of-type{
 		padding-top: .7rem;
 	}
 	.big {
-    	font-size: 2rem;
-    	line-height: 2rem;
+    	font-size: 1.8rem;
+    	line-height: 1.8rem;
 	}
 	h2.big{
 		margin: 1rem 0;
@@ -1211,6 +1230,9 @@ body section:last-of-type{
 			padding: 0;
 		}
 	}
+	.color-3 .txt{
+		padding-right: 0rem;
+	}
 	.color-3 .valign{
 		padding-top: 15vh;
 	}
@@ -1218,16 +1240,23 @@ body section:last-of-type{
 		padding-top: 25vh;
 	}
 	.color-6 main > .row .col:first-child{
-		padding-top: 15vh;
+		padding-top: 10vh;
 	}
 	.color-7 .m7{
 		padding: 0 1rem;
 	}
-	.color-8 main{
-		padding-top: 0!important;
-		.row{
-			padding-top: 4.7rem;
+	.color-8{
+		min-height: 85vh;
+		main{
+			height: 85vh;
+			padding-top: 0!important;
+			.row{
+				padding-top: 4.7rem;
+			}		
 		}
+		.mini-logo {
+    		width: 80px;
+		}		
 	}
 	.perfil{		
 		form > .col > span {
@@ -1239,6 +1268,9 @@ body section:last-of-type{
 			width: 80%;
 		}
 	}
+	main .grande {
+    	font-size: 100%;
+	}
 	footer.page-footer{
 		font-size: .8rem;
 		position: absolute;
@@ -1246,6 +1278,9 @@ body section:last-of-type{
 		i.small{
 			font-size: 1.5rem;
 		}		
+	}
+	main .select-wrapper input.select-dropdown {
+    	font-size: 1.2rem;
 	}
 	.sidebar, .side-nav{
 		ol{
@@ -1269,6 +1304,12 @@ body section:last-of-type{
 					color: #fff;
 				}
 			}
+		}
+	}
+	.new-perfil {
+    	padding-top: 0px !important;
+		main form.tab-content {
+    		font-size: 1.2rem !important;
 		}
 	}
 }
