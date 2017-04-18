@@ -17,7 +17,6 @@ header("pragma: public");
 header("Content-Transfer-Encoding:gzip;q=1.0,identity;q=0.5,*;q=0");
 header("Cache-Control: cache");
 header("Pragma: cache");
-header('Content-Type: text/html; charset=iso-8859-1');
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">

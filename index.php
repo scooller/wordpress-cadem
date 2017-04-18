@@ -117,7 +117,7 @@ wp_reset_postdata();
 				<div class="col s6">
 					<h6>Ganadores</h6>
 				</div>
-				<div class="col s12"><form id="searchwin">			
+				<div class="col m6 s12"><form id="searchwin">			
 					<div class="input-group">
 						<input type="search" id="search-input" placeholder="Busca tu encuesta" class="autocomplete">
 						<button type="submit" class="sufix"><i class="material-icons icon-search"></i></button>
