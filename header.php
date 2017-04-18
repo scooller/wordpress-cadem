@@ -6,7 +6,7 @@ header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
 header('Pragma: no-cache');
 */
-/*
+
 header('Accept-Ranges: bytes');
 $ExpStr = 'Expires: '.gmdate("D, d M Y H:i:s", time() + 14400) . " GMT"; // 14400 = 4 horas
 header($ExpStr);
@@ -17,7 +17,7 @@ header("pragma: public");
 header("Content-Transfer-Encoding:gzip;q=1.0,identity;q=0.5,*;q=0");
 header("Cache-Control: cache");
 header("Pragma: cache");
-header('Content-Type: text/html; charset=iso-8859-1');*/
+header('Content-Type: text/html; charset=iso-8859-1');
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
@@ -45,7 +45,7 @@ header('Content-Type: text/html; charset=iso-8859-1');*/
     <meta name="keywords" lang="es" content=""/>
          
 
-    <!--<link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-76x76.png">
@@ -63,7 +63,8 @@ header('Content-Type: text/html; charset=iso-8859-1');*/
     <link rel="manifest" href="<?php bloginfo('template_url'); ?>/favicon/favicon/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="<?php bloginfo('template_url'); ?>/favicon/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">-->
+    <meta name="theme-color" content="#ffffff">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.3/jquery.fullpage.min.css">
