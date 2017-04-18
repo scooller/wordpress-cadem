@@ -309,11 +309,15 @@ function init(){
 		}).done(function(resp) {
 			$btn.find('[type="submit"]').prop( "disabled", false );
 			console.log(resp);
-			if(resp.response){
+			if(resp.response == 1){
 				console.log('reEnviar');				
 				var url = resp.url;
 				url = url.replace(/\\/g, '');
 				window.location.href = url;		
+			}else if(resp.response == 2){
+				$encuestaID='';
+				$('#modalencuesta').modal('close');
+				Materialize.toast(resp.msj, 4000);
 			}else{
 				console.log('crear');
 				$encuestaID=btoa(resp.surveyid);
