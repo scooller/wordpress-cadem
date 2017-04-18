@@ -31,7 +31,7 @@ wp_reset_postdata();
 		</form>
     </div>    
 </div>
-<!-- // -->
+<!-- // MAIN  -->
 <div class="main" id="fullpage">
 	<section class="color-1 section" id="section-1">		
 	<main class="valign-wrapper">

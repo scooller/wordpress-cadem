@@ -14,7 +14,8 @@ function formInit(){
 		$('.chkNo').hide();
 		$('.chkSi').hide();
 		$('input[name="typeNY"]').change(function(event){
-			if($(this).val()=='si'){
+			console.log($(this).val());
+			if($(this).val()==1){
 				$('.chkSi').show();
 				$('.chkSi select').prop('disabled',false);
 				$('.chkNo').hide();
@@ -116,9 +117,10 @@ function formInit(){
 					//console.log($input);
 					if($input.attr("required")){
 						//console.log($input);
-						//console.log('val:'+$input.val());
+						console.log('val:'+$input.val());
+						//--
 						$input.removeClass('invalid');//quitar error
-						if (!$input.val()) { 
+						if ($input.val()==='') { 
 							$input.addClass('invalid');//agregar error
 							$return=false; 
 						}else if($input.attr('type')=='email'){
@@ -164,7 +166,8 @@ function formInit(){
 		});
 		//--
 		$('.custom-radio input:radio').change(function(){
-			var parent=$(this).parents('.custom-radio');		
+			console.log($(this).val());
+			var parent=$(this).parents('.custom-radio');	
 			parent.find('label.active').removeClass('active');
 			$(this).parent('label').addClass('active');
 		});

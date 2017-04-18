@@ -295,20 +295,22 @@ function init(){
 	$('#encuestaDestacada').submit(function( event ) {
 		event.preventDefault();
 		var rutString = $(this).find('#rut2').val();
+		var $btn = $(this);
 		rutString = rutString.replace(/\./g, '');
 		rutString = rutString.replace(/\-/g, '');
 		$url64 = btoa(rutString);
-		var $url = $(this).attr('action')+'/redirect/rut/'+$url64;
-		$(this).find('[type="submit"]').prop( "disabled", true );
+		var $url = $btn.attr('action')+'/redirect/rut/'+$url64;
+		$btn.find('[type="submit"]').prop( "disabled", true );
 		console.log($url);
 		var jqxhr = $.ajax( {
 			type : 'get',
 			url: $url,
 			dataType: 'json'
 		}).done(function(resp) {
+			$btn.find('[type="submit"]').prop( "disabled", false );
 			console.log(resp);
 			if(resp.response){
-				console.log('reEnviar');
+				console.log('reEnviar');				
 				var url = resp.url;
 				url = url.replace(/\\/g, '');
 				window.location.href = url;		

@@ -892,9 +892,15 @@ input:disabled{
 	}
 }
 /* Formularios */
+.dropdown-content li{
+	min-height: 35px;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+    padding: 5px 16px;
+}
 .new-perfil{
 	background-color: $color-new-perfil;
-	margin-top: 80px!important;
+	margin-top: 30px!important;
 	main{
 		form.tab-content{
 			font-size: 1.5rem!important;
@@ -1135,6 +1141,12 @@ body section:last-of-type{
 		display: -webkit-flex!important;
 		display: -ms-flexbox!important;
 	}
+}
+#toast-container {
+  top: auto !important;
+  right: auto !important;
+  bottom: 90%!important;
+  left:50%!important;  
 }
 @media #{$small-and-down} {
 	body,#fullpage,section{

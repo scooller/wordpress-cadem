@@ -83,9 +83,9 @@ get_header(); ?>
 						¿Es usted la persona que aporta el ingreso principal del hogar?
 					</div>
 					<div class="input-field col m4 s6">
-						<input type="radio" id="typeNY5" name="typeNY" class="check" value="si" required />
+						<input type="radio" id="typeNY5" name="typeNY" class="check" value="1" required />
       					<label for="typeNY5" data-error="Seleccione respuesta" data-success="">Si</label>
-      					<input type="radio" id="typeNY6" name="typeNY" class="check" value="no" required />
+      					<input type="radio" id="typeNY6" name="typeNY" class="check" value="2" required />
       					<label for="typeNY6">No</label>
 					</div>					
 					<!-- new preguntas -->
@@ -95,7 +95,7 @@ get_header(); ?>
 						  	<option value="" disabled selected>¿Cuál es tu actividad principal?</option>
 						  	<option value="1">Trabaja Remuneradamente</option>
 							<option value="2">Estudiante</option>
-							<option value="3">Dueña de Casa</option>
+							<option value="3">Dueña(o) de Casa</option>
 							<option value="4">Desempleado (buscando trabajo)</option>
 							<option value="5">Retirado, Jubilado, Pensionado</option>
 							<option value="6">Otro</option>
@@ -133,7 +133,7 @@ get_header(); ?>
 						  <option value="" disabled selected>¿Cuál es la actividad principal del sostenedor del hogar?</option>
 						  <option value="1">Trabajo Remuneradamente</option>
 						  <option value="2">Estudiante</option>
-						  <option value="3">Dueña de Casa</option>
+						  <option value="3">Dueña(o) de Casa</option>
 						  <option value="4">Desempleado (buscando trabajo)</option>
 						  <option value="5">Retirado, Jubilado, Pensionado</option>
 						  <option value="6">Otro</option>
@@ -180,7 +180,7 @@ get_header(); ?>
 						<input type="checkbox" name="terminos" id="terminos" />
 						<label for="terminos" data-error="Debe aceptar terminos y condiciones" data-success="">Ok, Acepto.</label>
 					</div>
-					<div class="input-field col m12 s12">
+					<div class="input-field col m6 s12">
 						<button type="submit" class="btn btn-black">Enviar</button>
 					</div>
 				</div>				

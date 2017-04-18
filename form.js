@@ -14,6 +14,7 @@ function formInit(){
 		$('.chkNo').hide();
 		$('.chkSi').hide();
 		$('input[name="typeNY"]').change(function(event){
+			console.log($(this).val());
 			if($(this).val()==1){
 				$('.chkSi').show();
 				$('.chkSi select').prop('disabled',false);
