@@ -16,6 +16,7 @@ var $hover=true;
 var $loader='<div class="valign-wrapper center-align" style="height: 100%;"><div class="valign" style="margin: 0 auto;"><div class="preloader-wrapper big active"> <div class="spinner-layer spinner-blue"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-red"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-yellow"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> <div class="spinner-layer spinner-green"> <div class="circle-clipper left"> <div class="circle"></div> </div><div class="gap-patch"> <div class="circle"></div> </div><div class="circle-clipper right"> <div class="circle"></div> </div> </div> </div></div></div>';
 var fpoptions={
 	//Navigation
+	//anchors: ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6', 'color-7', 'color-8'],
 	navigation: false,
 	autoScrolling: true,
 	fitToSection: true,
@@ -39,6 +40,8 @@ var fpoptions={
 
 	//events
 	onLeave: function(index, nextIndex, direction){
+		console.log(index+', '+nextIndex);
+		
 		$('.sidebar li.active').removeClass('active');
 		$('.sidebar li').eq(nextIndex-1).addClass('active');
 		$('#mobile-demo ol li.active').removeClass('active');
@@ -54,8 +57,9 @@ var fpoptions={
 
 	},
 	afterLoad: function(anchorLink, index){
+		console.log(index+', '+anchorLink);
 		$hover=true;
-		$.each($('section.color-'+index).find('[data-anim]'),function(index,val){
+		$.each($('section.'+anchorLink).find('[data-anim]'),function(index,val){
 			$seccion=$(this);
 			$anim=$seccion.data('anim');
 			$anim=$anim.replace(/In/i, "Out");	
@@ -89,10 +93,15 @@ $(function() {
 		});
 	}
 	$('[data-anim]').css('opacity',0);
-	if($('#fullpage').length){		
-		/*if($isMobile){
-			fpoptions['fixedElements']='.navbar-fixed';
-		}*/
+	if($('#fullpage').length){	
+		var anchors=Array();
+		$.each($('#fullpage section'),function(index,val){
+			   var num=$(this).attr('id').replace('section-','color-');
+			   anchors.push(num);
+		});
+		//console.log(anchors)
+		fpoptions['anchors']=anchors;
+		
 		if(!$isIphone){
 			$fullPage=$('#fullpage').fullpage(fpoptions);	
 		}else{
@@ -225,8 +234,12 @@ $(function() {
 		//$('body').css('display','block');
 		//$('.section').css('display','block');
 	}
+	if(navigator.userAgent.indexOf("Safari") > -1){
+		$('#nav-mobile .responsive-img').css("margin-top",0);
+	}
 });
 $(window).load(function() {
+	$('#load').hide();
 	//formulario
 	setTimeout(function(){
 		$('#nf-form-1-cont #nf-field-1-wrap .nf-field-element').prepend('<i class="material-icons prefix left icon-usuario small" aria-hidden="true"></i>');

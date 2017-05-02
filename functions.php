@@ -2,10 +2,10 @@
 //header('Access-Control-Allow-Origin: *'); 
 add_action( 'after_setup_theme', 'register_my_menu' );
 function register_my_menu() {
-	register_nav_menu( 'header', __( 'Menu Header', 'cademonline' ) );
+	//register_nav_menu( 'header', __( 'Menu Header', 'cademonline' ) );
 	register_nav_menu( 'general', __( 'Menu Principal', 'cademonline' ) );
-	register_nav_menu( 'mobile', __( 'Menu Mobile', 'cademonline' ) );
-	register_nav_menu( 'footer', __( 'Menu Footer', 'cademonline' ) );
+	register_nav_menu( 'mobile', __( 'Menu Header', 'cademonline' ) );
+	//register_nav_menu( 'footer', __( 'Menu Footer', 'cademonline' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5' );
 }
@@ -260,11 +260,13 @@ function new_user(){
 		'email'						=> $_POST['email'],
 		'region'					=> $_POST['region'],
 		'comuna'					=> $_POST['comunasel'],
-		'p2'						=> $_POST['typeNY'],
-		'p1'						=> $_POST['p3'],
-		'p3'						=> $_POST['p1'],
-		'p5'						=> $_POST['p5'],
-		'p6'						=> $_POST['p6'],
+		'p2'						=> $_POST['typeNY'], //ok 
+		'p1'						=> $_POST['p3'], //ok
+        'p4'						=> $_POST['p5'], //ok 
+        'p6'						=> $_POST['p6'], //ok
+        'p3'						=> $_POST['p1'],
+        'p5'					    => $_POST['p4'],
+        'p8'						=> $_POST['p6'],
 		'password'					=> encrypt($_POST['password']),
 		'confirmapassword'			=> encrypt($_POST['confirmapassword']),
 		'terminos'					=> str_replace('on', 1, $_POST['terminos']),

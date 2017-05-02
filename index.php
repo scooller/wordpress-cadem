@@ -347,7 +347,7 @@ var $preguntas=Array(
 		<footer class="page-footer black" data-anim="fadeInUp">
 			<div class="container"><div class="row">
 				<div class="col s4">
-					<a class="white black-text btn btn-double nav-click" href="#5" data-index="5">INVITA A TUS<br>AMIGOS Y GANA</a>
+					<a class="white black-text btn btn-double nav-click" href="#color-5" data-index="5">INVITA A TUS<br>AMIGOS Y GANA</a>
 				</div>
 				<div class="col s4 center-align" style="padding-top: 1vh;">
 					<a href="<?php echo get_permalink(59) ?>" target="_blank" class="white-text link">Términos y condiciones</a>

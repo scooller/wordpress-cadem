@@ -137,8 +137,43 @@ function formInit(){
 								$return=false; 
 							}
 						}
-					}
+					}					
+					
 				}
+				//extra
+				$.each($('#nperfil select:enabled'),function(){
+					console.log($(this).val());
+					if(!$(this).val()){
+						$extras+=', Selecciona una opcion '+$(this).find('option:selected').text();
+						$(this).addClass('invalid');
+						$return=false; 
+					}else{
+						$(this).removeClass('invalid');
+					}
+				});
+				//--
+				if(!$('#region').val()){
+					$extras+=', Selecciona Región';
+					$('#region').addClass('invalid');
+					$return=false; 
+				}else{
+					$('#region').removeClass('invalid');
+				}
+				if(!$('#nperfil input[name="typeNY"]:checked').val()){
+					$extras+=', Selecciona Aporte';
+					$('#nperfil input[name="typeNY"]').addClass('invalid');
+					$return=false; 
+				}else{
+					$('#nperfil input[name="typeNY"]').removeClass('invalid');
+				}
+				if(!$('#nperfil input[name="terminos"]:checked').val()){
+					$extras+=', Debes estar deacuerdo con los terminos';
+					$('#nperfil input[name="terminos"]').addClass('invalid');
+					$return=false; 
+				}else{
+					$('#nperfil input[name="terminos"]').removeClass('invalid');
+				}
+				//--
 				if(!$return){
 					Materialize.toast('Favor ingresar los datos correspondientes'+$extras);
 					$('ul.tabs').tabs('select_tab', 'datos');

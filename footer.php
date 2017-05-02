@@ -4,7 +4,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.3/jquery.fullpage.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.0/jquery.form.min.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/js/jquery.fullpage.extensions.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/scrolloverflow.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.rut.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.inlinesvg.min.js"></script>

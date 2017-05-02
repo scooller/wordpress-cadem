@@ -1,12 +1,13 @@
 <?php
 // CACHE CONTROL
-/*
+
 header('Expires: Sun, 01 Jan 2014 00:00:00 GMT');
 header('Cache-Control: no-store, no-cache, must-revalidate');
 header('Cache-Control: post-check=0, pre-check=0', FALSE);
 header('Pragma: no-cache');
-*/
 
+
+/*
 header('Accept-Ranges: bytes');
 $ExpStr = 'Expires: '.gmdate("D, d M Y H:i:s", time() + 14400) . " GMT"; // 14400 = 4 horas
 header($ExpStr);
@@ -16,10 +17,10 @@ header("Cache-Control: public");
 header("pragma: public");
 header("Content-Transfer-Encoding:gzip;q=1.0,identity;q=0.5,*;q=0");
 header("Cache-Control: cache");
-header("Pragma: cache");
+header("Pragma: cache");*/
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,13 +36,21 @@ header("Pragma: cache");
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="google-site-verification" content="" />
     <meta name="msvalidate.01" content="" />
-    <meta property="og:title" content="<?php bloginfo('name'); ?>"/>
-    <meta property="og:image" content="<?php bloginfo('template_url'); ?>/fb-share.jpg"/>
+    <meta property="og:title" content="¡Únete al Panel Web de Cadem Online!"/>
+    <meta property="og:image" content="<?php bloginfo('template_url'); ?>/img/bg-01.jpg"/>
     <meta property="og:site_name" content="<?php bloginfo('name'); ?>"/>
-    <meta property="og:description" content="<?php bloginfo('description'); ?>"/>
+    <meta property="og:description" content="Contesta las encuestas y podrás ganar increíbles premios"/>
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="<?php bloginfo('url'); ?>"/>
-    <meta name="keywords" lang="es" content=""/>
+    <!-- Share:Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@CademOnline">
+    <meta name="twitter:creator" content="@CademOnline">
+    <meta name="twitter:title" content="¡Únete al Panel Web de Cadem Online!">
+    <meta name="twitter:description" content="Únete al Panel Web y gana increíbles premios http://cademonline.cl vía @cademonline">
+    <meta name="twitter:image" content="<?php bloginfo('template_url'); ?>/img/bg-01.jpg">
+    
+    <meta name="keywords" lang="es" content="<?php bloginfo('description'); ?>"/>
          
 
     <link rel="apple-touch-icon" sizes="57x57" href="<?php bloginfo('template_url'); ?>/favicon/apple-icon-57x57.png">
@@ -64,12 +73,13 @@ header("Pragma: cache");
     <meta name="msapplication-TileImage" content="<?php bloginfo('template_url'); ?>/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">	
+    <?php wp_head(); ?>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.3/jquery.fullpage.min.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/fontello/css/fontello.css">
-    <?php wp_head(); ?>
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/fontello/css/animation.css">
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/style.css?<?php echo rand(); ?>">
     <script type="text/javascript">
 		var $blogurl= '<?php bloginfo('url'); ?>';
@@ -78,6 +88,13 @@ header("Pragma: cache");
 </head>
 
 <body <?php body_class(); ?>>
+	<div id="load" style="display: none">
+		<div class="valign-wrapper">
+			<div class="valign">
+				<h2><img src="<?php bloginfo('template_url'); ?>/img/logo-cadem.svg" class=""><p><i class="icon-spin4 animate-spin"></i></p></h2>
+			</div>
+		</div>
+	</div>
 <?php 
 if(is_home()){
 	get_template_part( 'nav', 'header' );
