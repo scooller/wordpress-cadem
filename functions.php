@@ -4,7 +4,7 @@ add_action( 'after_setup_theme', 'register_my_menu' );
 function register_my_menu() {
 	//register_nav_menu( 'header', __( 'Menu Header', 'cademonline' ) );
 	register_nav_menu( 'general', __( 'Menu Principal', 'cademonline' ) );
-	register_nav_menu( 'mobile', __( 'Menu Header', 'cademonline' ) );
+	register_nav_menu( 'header', __( 'Menu Header', 'cademonline' ) );
 	//register_nav_menu( 'footer', __( 'Menu Footer', 'cademonline' ) );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5' );

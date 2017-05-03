@@ -118,12 +118,13 @@ $(function() {
 	}
 	reSize();
 	if($isIphone){
+		console.log('Iphone');
 		$.each($('.nav-click a'),function(index,val){
-			var num=$(this).attr('href').replace('#','');
+			var num=$(this).attr('href').replace('#color-','');
 			$(this).attr('href','#section-'+num);
 		});
 		$.each($('a.nav-click'),function(index,val){
-			var num=$(this).attr('href').replace('#','');
+			var num=$(this).attr('href').replace('#color-','');
 			$(this).attr('href','#section-'+num);
 		});
 	}
@@ -132,7 +133,7 @@ $(function() {
 		$(this).parent('li').addClass('active');
 		if(!$isIphone){
 			event.preventDefault;
-			var num=$(this).attr('href').replace('#','');			
+			var num=$(this).attr('href').replace('#','');
 			$.fn.fullpage.moveTo(num);
 			return false;
 		}
@@ -246,6 +247,12 @@ $(window).load(function() {
 		$('#nf-form-1-cont #nf-field-2-wrap .nf-field-element').prepend('<i class="material-icons prefix left icon-mail small" aria-hidden="true"></i>');
 		$('#nf-form-1-cont #nf-field-3-wrap .nf-field-element').prepend('<i class="material-icons prefix left icon-paper-plane-empty small" aria-hidden="true"></i>');
 		console.log('carga');
+		if($isIphone){
+			var hash = window.location.hash;
+			hash = hash.replace('#','');
+			var aTag = $('#section-'+hash);
+			$('html,body').animate({scrollTop: aTag.offset().top},'fast');
+		}
 	},1500);
 });
 $( window ).resize(function() {
@@ -274,6 +281,7 @@ function reSize(index){
 	$lastSection.find('.fp-tableCell > main').height($lastH+16);
 	//
 	$('.color-6 .fp-tableCell > .row > .col').height($('.color-6 .fp-tableCell > .row').height());
+	//--	
 }
 function init(){
 	//--Initialization
@@ -290,7 +298,11 @@ function init(){
 	});
 	$('.modal').modal();
 	$('.tooltipped').tooltip({delay: 50});
-	$('select').material_select();
+	if(!$isIphone){
+		$('select').material_select();
+	}else{
+		$('select').show();
+	}
 	$(".button-collapse").sideNav({
 		menuWidth: 300, // Default is 300
 		edge: 'right', // Choose the horizontal origin
@@ -403,11 +415,13 @@ function init(){
 		});
 	}
 	autocompleteInit();
-	formInit();
+	formInit();	
 }
 function loadRegister(){
 	if(!$isIphone){
-		$.fn.fullpage.moveTo(1);
+		$.fn.fullpage.moveTo(1);		
+	}else{
+		$('html,body').animate({scrollTop: $('#section-1').offset().top},'fast');
 	}
 	carga_page(false,$blogurl+'/new-perfil/ section > main',$('section.color-1'), 'new-perfil');
 }

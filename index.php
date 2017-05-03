@@ -96,8 +96,7 @@ wp_reset_postdata();
 		</div>
 	</main>
 	</section>
-	<!-- // -->
-	<section class="color-3 section" id="section-3">
+	<!-- // -->	
 <?php
 $query = new WP_Query(array('post_type' => 'encuesta', 'post_status' => 'publish', 'posts_per_page' => -1, 'order' => 'DESC', 'orderby' => 'menu_order'));
 $encuestas = array();
@@ -111,6 +110,7 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 endwhile; endif;
 wp_reset_postdata();
 ?>
+<section class="color-3 section" id="section-3">
 	<main>
 		<div class="row">
 			<div class="sub-title" data-anim="fadeInDown">
@@ -163,12 +163,15 @@ wp_reset_postdata();
 	</section>
 	<!-- // -->
 <?php
+$visible=false;
 $query = new WP_Query(array('post_type' => 'page', 'post_status' => 'publish', 'p' => 67));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
 	$desc=get_the_content( );
 	$img=wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full' );
+	$visible=true;
 endwhile; endif;
 wp_reset_postdata();
+	if($visible):
 ?>
 	<section class="color-4 section" id="section-4" style="background-image: url(<?php echo $img[0]; ?>)">
 		<main>
@@ -183,7 +186,7 @@ wp_reset_postdata();
 		</main>
 	</section>
 	<!-- // -->
-	<section class="color-5 section" id="section-5">
+<?php endif; ?>
 <?php
 $query = new WP_Query(array('post_type' => 'page', 'post_status' => 'publish', 'p' => 69));
 if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post(); $ID=$post->ID;
@@ -192,6 +195,7 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 endwhile; endif;
 wp_reset_postdata();
 ?>
+<section class="color-5 section" id="section-5">
 		<main>
 			<div class="row">
 			<div class="col m7 s12">
@@ -215,27 +219,7 @@ wp_reset_postdata();
 			</div>
 		</main>
 	</section>
-	<!-- // 
-	<section class="color-6 section">
-		<main>
-			<div class="row">
-				<div class="col m7 s12">
-					<h6 class="sub-title" data-anim="fadeInLeft">Tu Perfil</h6>
-					<div class="valign-wrapper"><div class="valign">
-						<h2 class="big" data-anim="fadeInLeft"><strong>Bienvenid@</strong><br>
-						Ya eres parte de Cadem Online</h2>
-						<p><a href="#" class="btn-large btn-black" data-anim="fadeInLeft"><i class="material-icons icon-angle-right right small" aria-hidden="true"></i> tu perfil</a></p>
-					</div></div>
-				</div>
-				<div class="col m5 s12">
-				<div class="valign-wrapper"><div class="valign" data-anim="fadeInRight">
-					Aquí podrás actualizar tus datos, revisar qué encuestas has contestado y qué otras puedes contestar
-				</div></div>
-				</div>
-			</div>
-		</main>
-	</section>
-	 // -->
+
 	<section class="color-6 section" id="section-6">
 		<main>
 <?php
@@ -261,7 +245,7 @@ wp_reset_postdata();
 		</main>
 	</section>
 	<!-- // -->
-	<section class="color-7 section" id="section-7">
+	
 <?php
 $query = new WP_Query(array('post_type' => 'faqs', 'post_status' => 'publish', 'posts_per_page' => -1, 'order' => 'DESC', 'orderby' => 'menu_order'));
 $faqs = array();
@@ -276,6 +260,7 @@ if ( $query->have_posts() ): while ( $query->have_posts() ): $query->the_post();
 endwhile; endif;
 wp_reset_postdata();
 ?>
+<section class="color-7 section" id="section-7">
 		<main>
 			<div class="row">
 			<div class="col m5 s12">

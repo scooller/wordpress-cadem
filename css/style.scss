@@ -1173,6 +1173,18 @@ body section:last-of-type{
 		display: -ms-flexbox!important;
 	}
 }
+.select-wrapper input.select-dropdown{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none; // latest Opera versions support -webkit-
+	user-select:none;
+}
+#nperfil select {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid;
+}
 #toast-container {
   top: auto !important;
   right: auto !important;

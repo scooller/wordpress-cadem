@@ -26,7 +26,11 @@ function formInit(){
 				$('.chkSi').hide();
 				$('.chkSi select').prop('disabled',true);
 			}
-			$('select').material_select();
+			if(!$isIphone){
+				$('select').material_select();
+			}else{
+				$('select').show();
+			}
 		});
 		$('select[name="p1"]').change(function(event){
 			var val=$(this).val();
@@ -37,7 +41,11 @@ function formInit(){
 			}else{
 				$('select[name="p6"] option').eq(0).text('¿Cuál fue tu ultimo trabajo u ocupación?');
 			}
-			$('select[name="p6"]').material_select();
+			if(!$isIphone){
+				$('select[name="p6"]').material_select();
+			}else{
+				$('select[name="p6"]').show();
+			}
 		});
 		$('.comunas').hide();
 		$('#region').change(function(event){
@@ -51,11 +59,19 @@ function formInit(){
 				$('.comunas').hide();
 				$('.comunas select').prop('disabled',true);
 			}
-			$('.comunas select').material_select();
+			if(!$isIphone){
+				$('.comunas select').material_select();
+			}else{
+				$('.comunas select').show();
+			}
 		});
 		//--Initialization
 		$('.tooltipped').tooltip({delay: 50});
-		$('select').material_select();	
+		if(!$isIphone){
+			$('select').material_select();
+		}else{
+			$('select').show();
+		}
 		$('.datepicker').pickadate({
 			firstDay: true,
 			selectMonths: true,
